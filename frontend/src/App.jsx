@@ -16,7 +16,7 @@ const sampleDataForPhotoListItem = {
 
 const App = () => (
   <div className="App">
-    <PhotoListItem data={sampleDataForPhotoListItem} />
+    <PhotoListItem photoData={sampleDataForPhotoListItem} />
 
     {/* The rest of your React code */}
   </div>

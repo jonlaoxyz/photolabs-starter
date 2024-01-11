@@ -2,12 +2,12 @@
 import React from "react";
 import "../styles/PhotoListItem.scss";
 
-const PhotoListItem = ({ data }) => {
-  const { id, location, imageSource, username, profile } = data;
+const PhotoListItem = ({ photoData }) => {
+  const { id, location, imageSource, username, profile } = photoData;
 
   return (
-    <div className="photo-list-item" key={id}>
-      <img src={imageSource} alt={`Photo by ${username}`} />
+    <div className="photo-list-item">
+      <img src={imageSource} alt={`Photo by ${username}`}  key={id} />
       <img className="profile-img" src={profile} alt={`${username}'s profile`} />
       <div className="details">
         <p>{`Username: ${username}`}</p>
