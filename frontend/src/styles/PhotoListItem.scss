@@ -25,7 +25,7 @@
 
 .photo-list__user-profile {
   object-fit: cover;
-  border-radius: 100%;
+  border-radius: 50%;
   vertical-align: middle;
   margin-right: 8px;
   width: 40px;
@@ -45,4 +45,5 @@
 
 .photo-list__user-location {
   color: #838383;
+  margin-left: 8px;
 }

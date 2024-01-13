@@ -3,6 +3,7 @@ import React from 'react';
 
 import PhotoList from './components/PhotoList';
 import './App.scss';
+import TopicList from 'components/TopicList';
 
 // const sampleDataForPhotoListItem = [
 // {
@@ -39,7 +40,7 @@ import './App.scss';
 
 const App = () => (
   <div className="App">
-
+    <TopicList />
     <PhotoList/>
 
   </div>
