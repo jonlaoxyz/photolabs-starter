@@ -24,7 +24,6 @@ const sampleDataForTopicList = [
 const TopicList = () => {
   return (
     <div className="top-nav-bar__topic-list">
-      PhotoLabs
       {sampleDataForTopicList.map(topicData => (
           <TopicListItem key={topicData.id} topicData={topicData} />
       ))}
