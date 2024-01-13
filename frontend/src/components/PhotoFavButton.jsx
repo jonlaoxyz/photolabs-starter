@@ -6,11 +6,10 @@ import '../styles/PhotoFavButton.scss';
 function PhotoFavButton() {
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const handleFavClick = useCallback(() => {
+  const handleFavClick = () => {
     setIsFavorite(prevIsFavorite => !prevIsFavorite);
-    // insert logic for persistent data here later
-  }, []);
-  
+  };
+
   return (
     <div className="photo-list__fav-icon" onClick={handleFavClick}>
       <div className="photo-list__fav-icon-svg">
