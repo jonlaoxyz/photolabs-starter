@@ -18,9 +18,11 @@ const HomeRoute = ({ photos, topics }) => {
     });
   }, []);
 
+  const isFavPhotoExist = favoritePhotos.length > 0;
+
   return (
     <div className="home-route">
-      <TopNavigation topics={topics} />
+      <TopNavigation topics={topics}  isFavPhotoExist={isFavPhotoExist} />
       <PhotoList photos={photos} toggleFavorite={toggleFavorite} favoritePhotos={favoritePhotos} />
     </div>
   );
