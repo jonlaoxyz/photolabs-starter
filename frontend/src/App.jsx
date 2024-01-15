@@ -39,7 +39,7 @@ const App = () => {
         closeModal={closeModal}
         photoData={selectedPhoto}
         photos={photosArray}
-        toggleFavorite={favoritePhotos}
+        toggleFavorite={setFavoritePhotos}
         favoritePhotos={favoritePhotos}
       />}
     </div>

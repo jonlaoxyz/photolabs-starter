@@ -16,7 +16,7 @@ const PhotoListItem = ({ photoData, toggleFavorite, isFavorite, openModal }) => 
   return (
     <div className="photo-list__item">
       <PhotoFavButton handleFavToggle={handleFavToggle} isFavorite={isFavorite} />
-      <img className="photo-list__image" src={urls.regular} alt={`Photo by ${user.username}`}  key={id} onClick={handleItemClick} />
+      <img className="photo-list__image" src={urls.regular} alt={`Photo by ${user.username}`} key={id} onClick={handleItemClick} />
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={user.profile} alt={`${user.username}'s profile`} />
         <p className="photo-list__user-info">{`${user.name}`}</p>

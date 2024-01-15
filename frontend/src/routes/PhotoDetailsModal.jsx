@@ -23,7 +23,13 @@ const PhotoDetailsModal = ({ closeModal, photoData, toggleFavorite, favoritePhot
         <p className="photo-details-modal__photographer-location">{`${location.city}, ${location.country}`}</p>
         </div>
         <div className="photo-details-modal__similar-photos">
-        <PhotoList photos={relatedImages} toggleFavorite={toggleFavorite} favoritePhotos={favoritePhotos} openModal={openModal} closeModal={closeModal} />
+        <PhotoList
+          photos={relatedImages}
+          toggleFavorite={toggleFavorite}
+          favoritePhotos={favoritePhotos}
+          openModal={openModal}
+          closeModal={closeModal}
+        />
         </div>
       </div>
 
