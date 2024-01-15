@@ -10,7 +10,7 @@ const PhotoListItem = ({ photoData, toggleFavorite, isFavorite, openModal }) => 
   };
 
   const handleItemClick = () => {
-    openModal(photoData);
+    openModal && openModal(photoData);
   };
 
   return (

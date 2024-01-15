@@ -13,6 +13,7 @@ const App = () => {
   // Used to handle Modal state/logic
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [favoritePhotos, setFavoritePhotos] = useState([]);
 
   const openModal = (photoData) => {
     setIsModalOpen(true);
@@ -30,8 +31,17 @@ const App = () => {
         photos={photosArray}
         topics={topicsArray}
         openModal={openModal}
+        closeModal={closeModal}
+        favoritePhotos={favoritePhotos}
+        setFavoritePhotos={setFavoritePhotos}
       />
-      {isModalOpen && <PhotoDetailsModal closeModal={closeModal} photoData={selectedPhoto} photos={photosArray} />}
+      {isModalOpen && <PhotoDetailsModal
+        closeModal={closeModal}
+        photoData={selectedPhoto}
+        photos={photosArray}
+        toggleFavorite={favoritePhotos}
+        favoritePhotos={favoritePhotos}
+      />}
     </div>
   );
 };
