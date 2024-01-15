@@ -1,10 +1,9 @@
+// PhotoList.jsx
 import React from "react";
 import PhotoListItem from './PhotoListItem';
 import "../styles/PhotoList.scss";
 
-
-
-const PhotoList = ({ photos, toggleFavorite, favoritePhotos, openModal, closeModal }) => {
+const PhotoList = ({ photos, toggleFavorite, favoritePhotos, setFavoritePhotos, openModal, closeModal }) => {
   return (
     <ul className="photo-list">
       {photos.map(photoData => (
@@ -15,6 +14,7 @@ const PhotoList = ({ photos, toggleFavorite, favoritePhotos, openModal, closeMod
             isFavorite={favoritePhotos.includes(photoData.id)}
             openModal={openModal}
             closeModal={closeModal}
+            setFavoritePhotos={setFavoritePhotos}
           />
         </li>
       ))}
