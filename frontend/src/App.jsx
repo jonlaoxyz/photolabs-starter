@@ -31,7 +31,7 @@ const App = () => {
         topics={topicsArray}
         openModal={openModal}
       />
-      {isModalOpen && <PhotoDetailsModal closeModal={closeModal} photoData={selectedPhoto} />}
+      {isModalOpen && <PhotoDetailsModal closeModal={closeModal} photoData={selectedPhoto} photos={photosArray} />}
     </div>
   );
 };
