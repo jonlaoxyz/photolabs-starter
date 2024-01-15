@@ -11,7 +11,6 @@ const PhotoListItem = ({ photoData, toggleFavorite, isFavorite, openModal }) => 
   
   const handlePhotoClick = () => {
     openModal();
-    
   };
 
   return (

@@ -10,12 +10,11 @@ const topicsArray = Object.values(topics);
 
 const App = () => {
 
+  // Used to handle Modal state/logic
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const openModal = () => {
     setIsModalOpen(true);
   };
-
   const closeModal = () => {
     setIsModalOpen(false);
   };
