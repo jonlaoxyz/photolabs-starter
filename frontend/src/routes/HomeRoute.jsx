@@ -5,7 +5,7 @@ import '../styles/HomeRoute.scss';
 import TopNavigation from 'components/TopNavigationBar';
 
 
-const HomeRoute = ({ photos, topics }) => {
+const HomeRoute = ({ photos, topics, openModal }) => {
 
   const [favoritePhotos, setFavoritePhotos] = useState([]);
   const toggleFavorite = useCallback((photoId) => {
@@ -22,8 +22,16 @@ const HomeRoute = ({ photos, topics }) => {
 
   return (
     <div className="home-route">
-      <TopNavigation topics={topics}  isFavPhotoExist={isFavPhotoExist} />
-      <PhotoList photos={photos} toggleFavorite={toggleFavorite} favoritePhotos={favoritePhotos} />
+      <TopNavigation
+        topics={topics}
+        isFavPhotoExist={isFavPhotoExist}
+      />
+      <PhotoList
+        photos={photos}
+        toggleFavorite={toggleFavorite}
+        favoritePhotos={favoritePhotos}
+        openModal={openModal}
+      />
     </div>
   );
 };
