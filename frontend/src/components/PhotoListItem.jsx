@@ -8,13 +8,13 @@ const PhotoListItem = ({ photoData, toggleFavorite, isFavorite, openModal }) => 
   const handleFavToggle = () => {
     toggleFavorite(id);
   };
-  
-  const handlePhotoClick = () => {
-    openModal();
+
+  const handleItemClick = () => {
+    openModal(photoData);
   };
 
   return (
-    <div className="photo-list__item" onClick={handlePhotoClick}>
+    <div className="photo-list__item" onClick={handleItemClick}>
       <PhotoFavButton handleFavToggle={handleFavToggle} isFavorite={isFavorite} />
       <img className="photo-list__image" src={urls.regular} alt={`Photo by ${user.username}`}  key={id} />
       <div className="photo-list__user-details">
