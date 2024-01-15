@@ -4,11 +4,6 @@ import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from 'hooks/useApplicationData';
-import photos from 'mocks/photos';
-import topics from 'mocks/topics';
-
-const photosArray = Object.values(photos);
-const topicsArray = Object.values(topics);
 
 const App = () => {
   const {
@@ -19,13 +14,15 @@ const App = () => {
     favoritePhotos,
     toggleFavorite,
     setFavoritePhotos,
+    photoData,
+    topicData,
   } = useApplicationData();
 
   return (
     <div className="App">
       <HomeRoute
-        photos={photosArray}
-        topics={topicsArray}
+        photos={photoData}
+        topics={topicData}
         openModal={openModal}
         closeModal={closeModal}
         favoritePhotos={favoritePhotos}
@@ -36,7 +33,7 @@ const App = () => {
         <PhotoDetailsModal
           closeModal={closeModal}
           photoData={selectedPhoto}
-          photos={photosArray}
+          photos={photoData}
           toggleFavorite={toggleFavorite}
           favoritePhotos={favoritePhotos}
           setFavoritePhotos={setFavoritePhotos}
