@@ -6,13 +6,13 @@ import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = ({
+  setFavoritePhotos,
   closeModal,
   photoData,
   toggleFavorite,
   favoritePhotos,
   openModal,
   isFavorite,
-  setFavoritePhotos
 }) => {
   const { urls, location, user, similar_photos, id } = photoData;
   const handleFavToggle = () => {
@@ -29,8 +29,8 @@ const PhotoDetailsModal = ({
         <img src={closeSymbol} alt="close symbol" />
       </button>
       <div>
-        <PhotoFavButton handleFavToggle={handleFavToggle} isFavorite={isFavorite} setFavoritePhotos={setFavoritePhotos} />
-        <img src={urls.full} alt={`Photo by ${user.username}`} className="photo-details-modal__image" />
+          <PhotoFavButton handleFavToggle={handleFavToggle} isFavorite={isFavorite} setFavoritePhotos={setFavoritePhotos} />
+          <img src={urls.full} alt={`Photo by ${user.username}`} className="photo-details-modal__image" />
         <div className="photo-details-modal__photographer-details">
           <img
             className="photo-details-modal__photographer-profile"

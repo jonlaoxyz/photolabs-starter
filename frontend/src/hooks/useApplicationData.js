@@ -41,7 +41,6 @@ const useApplicationData = () => {
     fetch("/api/photos")
       .then((response) => response.json())
       .then((data) => {
-        console.log('Fetched photo data:', data);
         dispatch({ type: 'SET_PHOTO_DATA', payload: data });
       })
       .catch((error) => console.error('Error fetching photo data:', error));
@@ -51,7 +50,6 @@ const useApplicationData = () => {
     fetch("/api/topics")
       .then((response) => response.json())
       .then((data) => {
-        console.log('Fetched topic data:', data);
         dispatch({ type: 'SET_TOPIC_DATA', payload: data });
       })
       .catch((error) => console.error('Error fetching topic data:', error));
