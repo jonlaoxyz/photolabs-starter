@@ -9,6 +9,8 @@ const HomeRoute = ({
   fetchPhotosByTopic,
   setFavoritePhotos,
   favoritePhotos,
+  isFavorite,
+  handleFavToggle,
   photos,
   topics,
   openModal,
@@ -34,14 +36,20 @@ const HomeRoute = ({
 
   return (
     <div className="home-route">
-      <TopNavigation topics={topics} isFavPhotoExist={isFavPhotoExist} onTopicClick={handleTopicClick} />
+      <TopNavigation
+        topics={topics}
+        isFavPhotoExist={isFavPhotoExist}
+        onTopicClick={handleTopicClick}
+      />
       <PhotoList
         photos={currentTopicPhotos.length > 0 ? currentTopicPhotos : photos}
+        handleFavToggle={handleFavToggle}
+        isFavorite={isFavorite}
         toggleFavorite={toggleFavorite}
+        setFavoritePhotos={setFavoritePhotos}
         favoritePhotos={favoritePhotos}
         openModal={openModal}
         closeModal={closeModal}
-        setFavoritePhotos={setFavoritePhotos}
       />
     </div>
   );

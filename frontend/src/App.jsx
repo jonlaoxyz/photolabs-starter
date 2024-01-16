@@ -11,7 +11,9 @@ const App = () => {
     fetchPhotosByTopic,
     setFavoritePhotos,
     toggleFavorite,
+    handleFavToggle,
     favoritePhotos,
+    isFavorite,
     isModalOpen,
     openModal,
     closeModal,
@@ -23,11 +25,13 @@ const App = () => {
   return (
     <div className="App">
       <HomeRoute
-        currentTopicPhotos={currentTopicPhotos}
-        fetchPhotosByTopic={fetchPhotosByTopic}
+        handleFavToggle={handleFavToggle}
+        toggleFavorite={toggleFavorite}
         setFavoritePhotos={setFavoritePhotos}
         favoritePhotos={favoritePhotos}
-        toggleFavorite={toggleFavorite}
+        isFavorite={isFavorite}
+        currentTopicPhotos={currentTopicPhotos}
+        fetchPhotosByTopic={fetchPhotosByTopic}
         photos={photoData}
         topics={topicData}
         openModal={openModal}
@@ -35,9 +39,11 @@ const App = () => {
       />
       {isModalOpen && (
         <PhotoDetailsModal
+          handleFavToggle={handleFavToggle}
+          toggleFavorite={toggleFavorite}
           setFavoritePhotos={setFavoritePhotos}
           favoritePhotos={favoritePhotos}
-          toggleFavorite={toggleFavorite}
+          isFavorite={isFavorite}
           closeModal={closeModal}
           photoData={selectedPhoto}
           photos={photoData}

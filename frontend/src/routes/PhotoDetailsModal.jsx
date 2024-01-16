@@ -6,15 +6,16 @@ import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = ({
-  setFavoritePhotos,
-  closeModal,
-  photoData,
   toggleFavorite,
+  setFavoritePhotos,
   favoritePhotos,
-  openModal,
   isFavorite,
+  photoData,
+  openModal,
+  closeModal,
 }) => {
   const { urls, location, user, similar_photos, id } = photoData;
+
   const handleFavToggle = () => {
     toggleFavorite(id);
   };
@@ -29,28 +30,42 @@ const PhotoDetailsModal = ({
         <img src={closeSymbol} alt="close symbol" />
       </button>
       <div>
-          <PhotoFavButton handleFavToggle={handleFavToggle} isFavorite={isFavorite} setFavoritePhotos={setFavoritePhotos} />
+        <div>
+          <PhotoFavButton
+            isFavorite={isFavorite}
+            handleFavToggle={handleFavToggle}
+            toggleFavorite={toggleFavorite}
+            setFavoritePhotos={setFavoritePhotos}
+            openModal={openModal}
+            closeModal={closeModal}
+          />
           <img src={urls.full} alt={`Photo by ${user.username}`} className="photo-details-modal__image" />
+        </div>
         <div className="photo-details-modal__photographer-details">
           <img
             className="photo-details-modal__photographer-profile"
             src={user.profile}
             alt={`${user.username}'s profile`}
           />
-          <p className="photo-details-modal__photographer-info">{`${user.name}`}</p>
-          <p className="photo-details-modal__photographer-location">{`${location.city}, ${location.country}`}</p>
+          <span>
+          <span className="photo-details-modal__photographer-info">{`${user.name}`}</span><br />
+          <span className="photo-details-modal__photographer-location">{`${location.city}, ${location.country}`}</span>
+          </span>
         </div>
+        <h3 className="photo-details-modal__header">Related Photos</h3>
         <div className="photo-details-modal__top-bar">
-          <h3 className="photo-details-modal__header">Related Photos</h3>
-        </div>
-        <div className="photo-details-modal__similar-photos">
-          <PhotoList
-            photos={relatedImages}
-            toggleFavorite={toggleFavorite}
-            favoritePhotos={favoritePhotos}
-            openModal={openModal}
-            closeModal={closeModal}
-          />
+          <div className="photo-details-modal__similar-photos">
+            <PhotoList
+              photos={relatedImages}
+              toggleFavorite={toggleFavorite}
+              favoritePhotos={favoritePhotos}
+              setFavoritePhotos={setFavoritePhotos}
+              isFavorite={isFavorite}
+              handleFavToggle={handleFavToggle}
+              openModal={openModal}
+              closeModal={closeModal}
+              />
+          </div>
         </div>
       </div>
     </div>
