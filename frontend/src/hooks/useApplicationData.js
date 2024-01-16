@@ -6,7 +6,8 @@ const initialState = {
   selectedPhoto: null,
   favoritePhotos: [],
   photoData: [],
-  topicData: []
+  topicData: [],
+  currentTopicPhotos: [],
 };
 
 const reducer = (state, action) => {
@@ -26,6 +27,8 @@ const reducer = (state, action) => {
       return { ...state, photoData: action.payload };
     case 'SET_TOPIC_DATA':
       return { ...state, topicData: action.payload };
+    case 'SET_CURRENT_TOPIC_PHOTOS':
+      return { ...state, currentTopicPhotos: action.payload };
     default:
       return state;
   }
@@ -34,18 +37,35 @@ const reducer = (state, action) => {
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // Effect to make the GET request and set photo data to the state
   useEffect(() => {
     fetch("/api/photos")
       .then((response) => response.json())
-      .then((data) => dispatch({ type: 'SET_PHOTO_DATA', payload: data }));
+      .then((data) => {
+        console.log('Fetched photo data:', data);
+        dispatch({ type: 'SET_PHOTO_DATA', payload: data });
+      })
+      .catch((error) => console.error('Error fetching photo data:', error));
   }, []);
-
+  
   useEffect(() => {
     fetch("/api/topics")
       .then((response) => response.json())
-      .then((data) => dispatch({ type: 'SET_TOPIC_DATA', payload: data }));
+      .then((data) => {
+        console.log('Fetched topic data:', data);
+        dispatch({ type: 'SET_TOPIC_DATA', payload: data });
+      })
+      .catch((error) => console.error('Error fetching topic data:', error));
   }, []);
+
+  const fetchPhotosByTopic = async (topicId) => {
+    try {
+      const response = await fetch(`/api/topics/photos/${topicId}`);
+      const data = await response.json();
+      dispatch({ type: 'SET_CURRENT_TOPIC_PHOTOS', payload: data });
+    } catch (error) {
+      console.error('Error fetching photos by topic:', error);
+    }
+  };
 
   const openModal = (photoData) => {
     dispatch({ type: 'OPEN_MODAL', payload: photoData });
@@ -64,6 +84,7 @@ const useApplicationData = () => {
     openModal,
     closeModal,
     toggleFavorite,
+    fetchPhotosByTopic,
   };
 };
 

@@ -1,10 +1,10 @@
 // HomeRoute.jsx
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import PhotoList from 'components/PhotoList';
 import '../styles/HomeRoute.scss';
 import TopNavigation from 'components/TopNavigationBar';
 
-const HomeRoute = ({ photos, topics, openModal, closeModal, favoritePhotos, setFavoritePhotos }) => {
+const HomeRoute = ({ photos, topics, openModal, closeModal, favoritePhotos, setFavoritePhotos, fetchPhotosByTopic, }) => {
 
   const toggleFavorite = (photoId) => {
     setFavoritePhotos((prevFavorites) => {
@@ -18,9 +18,18 @@ const HomeRoute = ({ photos, topics, openModal, closeModal, favoritePhotos, setF
 
   const isFavPhotoExist = favoritePhotos.length > 0;
 
+  useEffect(() => {
+    // This effect runs only when 'topics' changes
+    console.log('Topics have changed');
+  }, [topics]);
+
+  const handleTopicClick = useCallback((topicId) => {
+    fetchPhotosByTopic(topicId);
+  }, [fetchPhotosByTopic]);
+
   return (
     <div className="home-route">
-      <TopNavigation topics={topics} isFavPhotoExist={isFavPhotoExist} />
+      <TopNavigation topics={topics} isFavPhotoExist={isFavPhotoExist} onTopicClick={handleTopicClick} />
       <PhotoList
         photos={photos}
         toggleFavorite={toggleFavorite}
