@@ -8,6 +8,7 @@ const PhotoListItem = ({
   favoritePhotos,
   photoData,
   openModal,
+  smallThumbnails,
   }) => {
 
   const { id, location, urls, user } = photoData;
@@ -26,10 +27,12 @@ const PhotoListItem = ({
     <div className="photo-list__item">
       <PhotoFavButton
         handleFavToggle={handleFavToggle}
+        toggleFavorite={toggleFavorite}
         isFavorite={isFavorite}
         openModal={openModal}
       />
-      <img className="photo-list__image" src={urls.regular} alt={`Photo by ${user.username}`} key={id} onClick={handleItemClick} />
+      <img className={`photo-list__image ${smallThumbnails ? 'small-thumbnail' : ''}`}
+        src={urls.full} alt={`Photo by ${user.username}`} key={id} onClick={handleItemClick} />
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={user.profile} alt={`${user.username}'s profile`} />
         <span>

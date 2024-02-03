@@ -11,6 +11,7 @@ const PhotoList = ({
     handleFavToggle,
     openModal,
     closeModal,
+    smallThumbnails,
   }) => {
   return (
     <ul className="photo-list">
@@ -25,6 +26,7 @@ const PhotoList = ({
             favoritePhotos={favoritePhotos}
             openModal={openModal}
             closeModal={closeModal}
+            smallThumbnails={smallThumbnails}
           />
         </li>
       ))}

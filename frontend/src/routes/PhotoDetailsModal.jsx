@@ -30,16 +30,16 @@ const PhotoDetailsModal = ({
         <img src={closeSymbol} alt="close symbol" />
       </button>
       <div>
-        <div>
-          <PhotoFavButton
-            isFavorite={isFavorite}
-            handleFavToggle={handleFavToggle}
-            toggleFavorite={toggleFavorite}
-            setFavoritePhotos={setFavoritePhotos}
-            openModal={openModal}
-            closeModal={closeModal}
-          />
-          <img src={urls.full} alt={`Photo by ${user.username}`} className="photo-details-modal__image" />
+        <div className="photo-details-modal_image-holder">
+            <PhotoFavButton
+              isFavorite={isFavorite}
+              handleFavToggle={handleFavToggle}
+              toggleFavorite={toggleFavorite}
+              setFavoritePhotos={setFavoritePhotos}
+              openModal={openModal}
+              closeModal={closeModal}
+            />
+            <img src={urls.full} alt={`Photo by ${user.username}`} className="photo-details-modal__image" />
         </div>
         <div className="photo-details-modal__photographer-details">
           <img
@@ -54,7 +54,6 @@ const PhotoDetailsModal = ({
         </div>
         <h3 className="photo-details-modal__header">Related Photos</h3>
         <div className="photo-details-modal__top-bar">
-          <div className="photo-details-modal__similar-photos">
             <PhotoList
               photos={relatedImages}
               toggleFavorite={toggleFavorite}
@@ -64,8 +63,8 @@ const PhotoDetailsModal = ({
               handleFavToggle={handleFavToggle}
               openModal={openModal}
               closeModal={closeModal}
-              />
-          </div>
+              smallThumbnails={true}
+            />
         </div>
       </div>
     </div>

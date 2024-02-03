@@ -1,7 +1,8 @@
+
+
 .photo-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  gap: 16px; /* Adjust the gap between items as needed */
   list-style-type: none;
   margin: 0;
   padding: 0;
