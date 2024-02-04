@@ -1,14 +1,11 @@
-// PhotoList.jsx
 import React from "react";
 import PhotoListItem from './PhotoListItem';
 import "../styles/PhotoList.scss";
 
 const PhotoList = ({
     photos,
-    toggleFavorite,
+    toggleFavorite, 
     favoritePhotos,
-    setFavoritePhotos,
-    handleFavToggle,
     openModal,
     closeModal,
     smallThumbnails,
@@ -19,10 +16,8 @@ const PhotoList = ({
         <li key={photoData.id}>
           <PhotoListItem 
             photoData={photoData}
-            handleFavToggle={handleFavToggle}
-            isFavorite={favoritePhotos.includes(photoData.id)}
             toggleFavorite={toggleFavorite}
-            setFavoritePhotos={setFavoritePhotos}
+            isFavorite={Array.isArray(favoritePhotos) && favoritePhotos.includes(photoData.id)}
             favoritePhotos={favoritePhotos}
             openModal={openModal}
             closeModal={closeModal}

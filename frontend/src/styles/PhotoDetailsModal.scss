@@ -25,13 +25,20 @@
 }
 
 .photo-details-modal_image-holder {
+  position: relative;
   display: flex;
   justify-content: center; 
 }
 
 .photo-details-modal__image {
-  max-width: 70%;
+  max-width: 75%;
   margin: 0 20px;
+}
+
+.photo-details-modal_image-holder .photo-list__fav-icon {
+  position: relative;
+  top: 20px;
+  left: 80px;
 }
 
 .photo-details-modal__top-bar ul.photo-list {

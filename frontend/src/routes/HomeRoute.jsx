@@ -1,38 +1,29 @@
 // HomeRoute.jsx
 import React, { useCallback, useEffect } from 'react';
 import PhotoList from 'components/PhotoList';
-import '../styles/HomeRoute.scss';
 import TopNavigation from 'components/TopNavigationBar';
+import useApplicationData from 'hooks/useApplicationData';
+import '../styles/HomeRoute.scss';
+
 
 const HomeRoute = ({
   currentTopicPhotos,
   fetchPhotosByTopic,
-  setFavoritePhotos,
-  favoritePhotos,
   isFavorite,
   handleFavToggle,
   photos,
   topics,
   openModal,
   closeModal,
+  favoritePhotos,
+  toggleFavorite,
  }) => {
-
-  const toggleFavorite = (photoId) => {
-    setFavoritePhotos((prevFavorites) => {
-      if (prevFavorites.includes(photoId)) {
-        return prevFavorites.filter((id) => id !== photoId);
-      } else {
-        return [...prevFavorites, photoId];
-      }
-    });
-  };
 
   const isFavPhotoExist = favoritePhotos.length > 0;
 
   const handleTopicClick = useCallback((topicId) => {
     fetchPhotosByTopic(topicId);
   }, [fetchPhotosByTopic]);
-
 
   return (
     <div className="home-route">
@@ -43,11 +34,10 @@ const HomeRoute = ({
       />
       <PhotoList
         photos={currentTopicPhotos.length > 0 ? currentTopicPhotos : photos}
-        handleFavToggle={handleFavToggle}
-        isFavorite={isFavorite}
         toggleFavorite={toggleFavorite}
-        setFavoritePhotos={setFavoritePhotos}
         favoritePhotos={favoritePhotos}
+        isFavorite={isFavorite}
+        handleFavToggle={handleFavToggle}
         openModal={openModal}
         closeModal={closeModal}
       />

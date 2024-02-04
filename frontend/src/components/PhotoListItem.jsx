@@ -1,4 +1,3 @@
-// PhotoListItem.jsx
 import React from "react";
 import PhotoFavButton from "./PhotoFavButton"; 
 import "../styles/PhotoListItem.scss";
@@ -14,7 +13,7 @@ const PhotoListItem = ({
   const { id, location, urls, user } = photoData;
 
   const isFavorite = favoritePhotos.includes(id);
-
+    
   const handleFavToggle = () => {
     toggleFavorite(id);
   };
@@ -26,10 +25,9 @@ const PhotoListItem = ({
   return (
     <div className="photo-list__item">
       <PhotoFavButton
+        isFavorite={isFavorite}
         handleFavToggle={handleFavToggle}
         toggleFavorite={toggleFavorite}
-        isFavorite={isFavorite}
-        openModal={openModal}
       />
       <img className={`photo-list__image ${smallThumbnails ? 'small-thumbnail' : ''}`}
         src={urls.full} alt={`Photo by ${user.username}`} key={id} onClick={handleItemClick} />

@@ -9,7 +9,7 @@ const TopicList = ({ topics, onTopicClick }) => {
         <TopicListItem
           key={topicData.id}
           topicData={topicData}
-          onClick={onTopicClick} // Pass the onTopicClick function to each TopicListItem
+          onClick={onTopicClick}
         />
       ))}
     </div>

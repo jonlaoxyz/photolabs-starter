@@ -23,6 +23,8 @@ const reducer = (state, action) => {
         ? state.favoritePhotos.filter((id) => id !== photoId)
         : [...state.favoritePhotos, photoId];
       return { ...state, favoritePhotos: newFavoritePhotos };
+    case 'SET_FAVORITE_PHOTOS':
+      return { ...state, favoritePhotos: action.payload };
     case 'SET_PHOTO_DATA':
       return { ...state, photoData: action.payload };
     case 'SET_TOPIC_DATA':
@@ -65,12 +67,17 @@ const useApplicationData = () => {
     }
   };
 
+
   const openModal = (photoData) => {
     dispatch({ type: 'OPEN_MODAL', payload: photoData });
   };
 
   const closeModal = () => {
     dispatch({ type: 'CLOSE_MODAL' });
+  };
+
+  const setFavoritePhotos = (newFavoritePhotos) => {
+    dispatch({ type: 'SET_FAVORITE_PHOTOS', payload: newFavoritePhotos });
   };
 
   const toggleFavorite = (photoId) => {
@@ -83,6 +90,7 @@ const useApplicationData = () => {
     closeModal,
     toggleFavorite,
     fetchPhotosByTopic,
+    setFavoritePhotos,
   };
 };
 

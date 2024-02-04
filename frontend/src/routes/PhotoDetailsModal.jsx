@@ -1,21 +1,21 @@
 import React from 'react';
-import '../styles/PhotoDetailsModal.scss';
-import '../styles/PhotoFavButton.scss';
 import PhotoFavButton from 'components/PhotoFavButton';
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
+import '../styles/PhotoDetailsModal.scss';
+import '../styles/PhotoFavButton.scss';
 
 const PhotoDetailsModal = ({
   toggleFavorite,
-  setFavoritePhotos,
   favoritePhotos,
-  isFavorite,
   photoData,
   openModal,
   closeModal,
 }) => {
   const { urls, location, user, similar_photos, id } = photoData;
-
+  
+  const isFavorite = favoritePhotos.includes(id);
+  
   const handleFavToggle = () => {
     toggleFavorite(id);
   };
@@ -35,9 +35,6 @@ const PhotoDetailsModal = ({
               isFavorite={isFavorite}
               handleFavToggle={handleFavToggle}
               toggleFavorite={toggleFavorite}
-              setFavoritePhotos={setFavoritePhotos}
-              openModal={openModal}
-              closeModal={closeModal}
             />
             <img src={urls.full} alt={`Photo by ${user.username}`} className="photo-details-modal__image" />
         </div>
@@ -58,9 +55,7 @@ const PhotoDetailsModal = ({
               photos={relatedImages}
               toggleFavorite={toggleFavorite}
               favoritePhotos={favoritePhotos}
-              setFavoritePhotos={setFavoritePhotos}
               isFavorite={isFavorite}
-              handleFavToggle={handleFavToggle}
               openModal={openModal}
               closeModal={closeModal}
               smallThumbnails={true}
