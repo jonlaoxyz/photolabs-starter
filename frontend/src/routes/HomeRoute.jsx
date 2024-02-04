@@ -1,5 +1,5 @@
 // HomeRoute.jsx
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import PhotoList from 'components/PhotoList';
 import TopNavigation from 'components/TopNavigationBar';
 import useApplicationData from 'hooks/useApplicationData';

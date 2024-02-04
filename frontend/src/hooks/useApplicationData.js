@@ -12,11 +12,11 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'OPEN_MODAL':
+    case 'OPEN_MODAL': // handle opening of PhotoDetailsModal
       return { ...state, isModalOpen: true, selectedPhoto: action.payload };
-    case 'CLOSE_MODAL':
+    case 'CLOSE_MODAL': // handle closing of PhotoDetailsModal
       return { ...state, isModalOpen: false, selectedPhoto: null };
-    case 'TOGGLE_FAVORITE':
+    case 'TOGGLE_FAVORITE': // handle toggling the fav icon for each photo
       const photoId = action.payload;
       const isFavorite = state.favoritePhotos.includes(photoId);
       const newFavoritePhotos = isFavorite
